@@ -1,0 +1,70 @@
+*{ margin: 0;padding: 0;}
+ul,ol{ list-style: none;}
+
+.carousel{
+    width: 590px;
+    height: 470px;
+    overflow: hidden;
+    position: relative;
+}
+
+.images{
+    width: 5900px;
+    display: flex;
+    align-items: flex-start;
+    transition: all 0.5s;
+    transform: translate(-590px);
+}
+.images img{
+    width: 590px;
+}
+.images > .cloneImg{
+    transition: none;
+}
+.buttons{
+    position: absolute;
+    left: 50%;
+    bottom: 22px; 
+    transform: translateX(-50%);
+}
+.buttons > ul{
+    font-size: 0;
+}
+.buttons > ul > li{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    margin: 0 7px; 
+    cursor: pointer;
+}
+.buttons > ul > li.active{
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    transform: scale(1.2);
+}
+.directionButtons{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.directionButtons .toLeft,
+.directionButtons .toRight{
+    padding: 3px 0;
+}
+
+.directionButtons .toLeft:hover,
+.directionButtons .toRight:hover{
+    background: rgba(0, 0, 0, .3)
+}
+
+.directionButtons svg{
+    width: 24px;
+    height: 24px;
+}

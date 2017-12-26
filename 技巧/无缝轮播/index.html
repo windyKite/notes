@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝轮播</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style type="text/css">
+        .icon {
+           width: 1em; height: 1em;
+           vertical-align: -0.15em;
+           fill: currentColor;
+           overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="images">
+            <img class="cloneImg" src="./images/8.webp" alt="图片" width="590" height="470">
+            <img src="./images/1.jpg" alt="图片" width="590" height="470">
+            <img src="./images/2.webp" alt="图片" width="590" height="470">
+            <img src="./images/3.webp" alt="图片" width="590" height="470">
+            <img src="./images/4.webp" alt="图片" width="590" height="470">
+            <img src="./images/5.webp" alt="图片" width="590" height="470">
+            <img src="./images/6.webp" alt="图片" width="590" height="470">
+            <img src="./images/7.webp" alt="图片" width="590" height="470">
+            <img src="./images/8.webp" alt="图片" width="590" height="470">
+            <img class="cloneImg" src="./images/1.jpg" alt="图片" width="590" height="470">            
+        </div>
+        <div class="buttons">
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="directionButtons">
+            <div id="pre" class="toLeft">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-left"></use>
+                </svg>
+            </div>
+            <div id="next" class="toRight">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-left1"></use>
+                </svg>
+            </div>  
+        </div>
+    </div>
+    <script src="//at.alicdn.com/t/font_520306_zgdh87ey47dp9zfr.js"></script>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
