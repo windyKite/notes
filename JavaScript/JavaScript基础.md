@@ -111,11 +111,56 @@ window 全局对象分为两种：
 
 ## global 中的全局对象（未完）
 1. Number
+`var n = new Number(1)`创建一个 Number 对象
+1 与 new Number(1) 的区别：
+- 1 是简单类型，new Number(1) 是复杂类型
+- 1 直接存放在Stack内存中，new Number(1)存放在Heap内存中  
 2. String
+`var str = new String('Hello')`创建一个 String 对象
+'Hello' 与 new String('Hello') 的区别：
+- 'Hello' 是简单类型，new String('Hello')是复杂类型
 3. Boolean
+`var boolean = new Boolean(true)`创建一个 Boolean 对象
+true 与 new Boolean(true) 的区别：
+- true 是简单类型，new Boolean(true) 是复杂类型。
 4. Object
-
+`var obj = new Object()` 创建一个 Object 对象  
+`var boj1 = {}` 同样创建一个 Object 对象  
+两者之间并没有任何差异。
 
 ## 在字符串中插变量值
 1. 使用 `+` 号 插入
 2. 使用`${变量名}`插入，注意这种方法的字符串符号为 ``
+## JS中的数组
+1. 数组是什么？
+人类理解：数组是一组次序排列的数据。  
+JS理解： 用 Array 构造出来的对象（原型链中有`Array.prototype`的对象）  
+#### JS中数组的本质
+在JS中，数组的本质还是对象，而与正常的对象不一样的是， 数组 是一个特殊的对象。 
+数组原型指向Array.prototype，具有其他对象不具有的数组原型。（Function 也是一样。）
+2. 创建数组
+- `var arr = Array(arrayLength)`
+- `var arr = new Array(arrayLength)`
+- `var arr = []`创建一个空数组
+3. 数组的重要 API
+- `Array.prototype.forEach`
+    - 用法： `arr.forEach(function(value, key){})`
+    - 描述：数组 arr 调用 forEach 方法，接受一个函数作为参数，该函数的参数为 arr 对应的 value 和 key，以value 和 key 为参数执行 callback 函数。
+- `Array.prototype.sort`
+    - 用法： `arr.sort()`
+    - 描述： 对数组进行排序。默认按照 Unicode 编码进行排序。可以通过传入一个 callback 函数来指定排序顺序
+- `Array.prototype.map`
+    - 用法：`arr.map(function(value, key, arr){})`
+    - 描述：映射。为数组的每一个值执行一次 callback， 并返回新的数组。
+- `Array.prototype.filter`
+    - 用法：`arr.filter(function(value. key, arr){})`
+    - 描述： 过滤。为数组的每一个值执行一次 callback ，返回符合 callback 的新的数组值。
+- `Array.prototype.reduce`
+    - 用法： `arr.reduce(function(initValue, value, key, arr){})`
+    - 描述：遍历数组，对数组的每一个值执行callback，返回值作为下一次执行 callback 的 initValue，直到最后返回一个最终结果。
+4. 伪数组
+伪数组指具有与数组相似形态，原型链上没有 Array.prototype 的对象。  
+常见伪数组： arguments、querSelectorAll得到的对象
+
+伪数组转换为真正的数组：
+- `Array.prototype.slice.call(fakeArray)`
