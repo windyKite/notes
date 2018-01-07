@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>请求页面</title>
+</head>
+<body>
+    <p>你的余额为：<span id="amount">&&&amount&&&</span></p>
+    <button id="get">获取余额</button>  
+    <button id="add">加钱</button>
+    <button id="reduce">扣钱</button>
+</body>
+<script>
+    function xxx(data){
+        console.log(data)
+        amount.innerText = data
+        alert('成功')
+    }
+    add.addEventListener('click',function(){
+        var script = document.createElement("script")
+        script.src = "http://localhost:8888/add"
+        document.body.appendChild(script)
+        document.body.removeChild(script)
+    })
+    reduce.addEventListener('click',function(){
+        var script = document.createElement("script")
+        script.src = "http://localhost:8888/reduce"
+        document.body.appendChild(script)
+        document.body.removeChild(script)
+    })
+    get.addEventListener('click',function(){
+        var script = document.createElement("script")
+        script.src = "http://localhost:8888/get"
+        document.body.appendChild(script)
+        document.body.removeChild(script)
+    })
+</script>
+</html>
