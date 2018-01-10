@@ -13,28 +13,35 @@
     <button id="reduce">扣钱</button>
 </body>
 <script>
-    function xxx(data){
-        console.log(data)
-        amount.innerText = data
-        alert('成功')
+    function JSONP(path){
+        let script = document.createElement("script")
+        let functionName = 'callback' + parseInt(Math.random()*100000,10)
+        window[functionName] = function(data){
+            amount.innerText = data
+            alert('请求成功。')
+        }
+        script.src = "http://localhost:8888/" + path + "?callback=" + functionName
+        document.body.appendChild(script)
+        scriptDeal(script,functionName)
+    }
+    function scriptDeal(script,functionName){
+        script.onload = function(e){
+            e.currentTarget.remove()
+            delete window[functionName]
+        }
+        script.onerror = function(e){
+            e.currentTarget.remove()
+            delete window[functionName]
+        }
     }
     add.addEventListener('click',function(){
-        var script = document.createElement("script")
-        script.src = "http://localhost:8888/add"
-        document.body.appendChild(script)
-        document.body.removeChild(script)
+        JSONP('add')
     })
     reduce.addEventListener('click',function(){
-        var script = document.createElement("script")
-        script.src = "http://localhost:8888/reduce"
-        document.body.appendChild(script)
-        document.body.removeChild(script)
+        JSONP('reduce')
     })
     get.addEventListener('click',function(){
-        var script = document.createElement("script")
-        script.src = "http://localhost:8888/get"
-        document.body.appendChild(script)
-        document.body.removeChild(script)
+        JSONP('get')
     })
 </script>
 </html>
