@@ -59,7 +59,7 @@ if(!port){
       let callbackName = query.callback
       var amount = fs.readFileSync('./db','utf8') - 0
       amount -= 1
-      fs.writeFileSync(' ./db',amount)
+      fs.writeFileSync('./db',amount)
       response.setHeader('Content-Type','application/javascript')
       response.write(`${callbackName}(${amount})`)
       response.end()
