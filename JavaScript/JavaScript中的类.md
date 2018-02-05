@@ -170,7 +170,7 @@ bingPrototype = {
     attack: 5,
     walk: function(){console.log('walk')}
 }
- 
+
 function creareBing(id, hp){
     let bing = {}
 
