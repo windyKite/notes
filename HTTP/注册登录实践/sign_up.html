@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sign_up</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ol,ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .clearfix::after{
+            display: block;
+            content: '';
+            clear: both;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width: 667px;
+            outline: 1px solid red;
+        }
+        .tabs{
+            width: 100%;
+            outline: 1px solid black;
+            background: #000;
+        }
+        .tabs li{
+            float: left;
+            padding: 0px 24px;
+        }
+        .tabs li.active{
+            background: #ccc;
+        }
+        .tabs li a{
+            font-size: 14px;
+            padding: 14px 0;
+            display: inline-block;
+            vertical-align: top;
+            color: #fff;
+        }
+        .box-wrapper{
+            padding: 20px 26px 40px 36px;
+        }
+        #sign_in{
+            position: relative;
+        }
+        #sign_in h1{
+            color: #ff9800;
+            font-size: 2.92em;
+            font-weight: 400;
+        }
+
+        input{
+            padding-left: 15px;
+            border: none;
+            border-bottom:1px solid #9e9e9e;
+            width: 100%;
+            height: 3em;
+            font-size: 1em;
+            margin: 20px 0;
+        }
+        input:focus{
+            outline: none;
+            border-bottom:1px solid #2196f3;
+        }
+        .row{
+            position: relative;
+        }
+        .row label{
+            position: absolute;
+            top: 34px;
+            text-align: initial;
+            color: #9e9e9e;
+            transition: 0.3s;
+        }
+        input:focus + label{
+            color: #2196f3;
+            font-size: 0.8em;
+            top: 8px;    
+        }
+        .row label.active{
+            color: #2196f3;
+            font-size: 0.8em;
+            top: 8px;
+        }
+        .switch{
+            margin-top: 30px;
+        }
+        .switch label{
+            float: left;
+            font-size: 10px;
+        }
+        .switch input[type="checkbox"]{
+            margin: -9999px;
+        }
+        .switch span{
+            display: block;
+            /* border: 1px solid red; */
+            width: 40px;
+            height: 15px;
+            border-radius: 10px;
+            float: right;
+            margin-left: 20px;
+            position: relative;
+            background: #818181;
+        }
+        .switch span.active{
+            background: #1e88dc;
+        }
+        .switch span::after{
+            display: block;
+            content: '';
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            border: 1px solid #ddd;
+            top: -5px;
+            left: -6px;
+            transition: 0.3s;
+        }
+        .switch input[type="checkbox"]:checked span.active::after{
+            display: block;
+            content: '';
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            border: 1px solid #ddd;
+            top: -5px;
+            left: 23px;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="tabs clearfix">
+            <li><a href="#sign_in">LOGIN</a></li>
+            <li><a href="#sign_up">REGISTER</a></li>
+        </ul>
+        <div class="box-wrapper">
+            <div id="sign_in">
+                <h1>Log In</h1>
+                <form action="">
+                    <div class="row">
+                        <input type="text" name="email" id="login_email">  
+                        <label for="login_email">Email</label>
+                    </div>
+                    <div class="row">
+                        <input type="password" name="password" id="login_password">                             
+                        <label for="login_password">Password</label>
+                    </div>
+                    <div class="switch">
+                        <label for="switch">Remember Me? <span></span></label>
+                            <input type="checkbox"  id="switch">                       
+                    </div>
+                </form>
+            </div>
+            <div id="sign_up"></div>
+        </div>
+
+    </div>
+    <script>
+        let email = document.querySelector('#login_email')
+        password = document.querySelector('#login_password')
+        email.addEventListener('blur',()=>{
+            if(email.value !== ''){
+                document.querySelector('label[for="login_email"]').classList = 'active'
+            }else{
+                document.querySelector('label[for="login_email"]').classList = ''
+            }
+        })
+        password.addEventListener('blur', ()=>{
+            if(password.value !== ''){
+                console.log('聚焦')
+                document.querySelector('label[for="login_password"]').classList = 'active'
+            }else{
+                console.log('空值')
+                document.querySelector('label[for="login_password"]').classList = ''
+            }
+        })
+
+        let switchButton = document.querySelector('.switch label span')
+        switchButton.addEventListener('click',(e)=>{
+            console.log(1)
+            console.log(e.currentTarget.classList)
+            if(e.currentTarget.classList == 'active'){
+                console.log(2)
+                e.currentTarget.classList = ''
+            }else{
+                console.log(3)
+                e.currentTarget.classList = 'active'
+            }           
+        })
+    </script>
+</body>
+</html>
