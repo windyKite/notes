@@ -33,8 +33,8 @@ console.log(name, age)  // 'xx'  18
 模式匹配是一个很实用的东西，能够大量节约赋值时间，语法和解构赋值差不多。
 
 3. html 替换
-`element.html = newHtml` 会替换 element 的所有元素，导致绑定在原元素上面的事件失效。
-解决方法： 使用__事件委托__将事件绑定到 element 元素上。
+`element.innerHTML = 'newHtml'` 会替换 element 的所有元素，导致绑定在原子元素上面的事件失效。
+解决方法： 使用 __事件委托__ 将事件绑定到 element 元素上。
 
 4. Object.assign()
 ```javascript
