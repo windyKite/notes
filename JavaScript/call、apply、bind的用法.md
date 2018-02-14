@@ -15,7 +15,7 @@ call 调用一个函数，给该函数一个指定的 this 值 thisArg 和指定
 call、apply 指定的参数会在 arguments 中顺序排列在原函数的参数后面。
 
 使用 call 调用一个函数：
-```
+```javascript
 var obj = {
     name: 'Sam',
     age: 22,
@@ -70,7 +70,7 @@ Array.apply(null,[1,,2])  // [1,undefined,2]
 ## bind
 `bind()`给函数的 this 绑定一个指定的对象，返回一个一样的新函数。`bind()` 不仅能绑定 this 的指向，还能绑定原函数的参数。就是说，`bind()`的第二个参数之后的参数是会覆盖原函数的参数。  
 > bind比call方法和apply方法更进一步的是，除了绑定this以外，还可以绑定原函数的参数。– JavaScript标准参考教程
-```
+```javascript
 var obj = {
     count: 1,
     add: function(){
