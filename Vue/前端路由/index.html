@@ -1,0 +1,104 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hash前端路由实现</title>
+  <style>
+    x-tab{display: block}
+    x-tab > .nav > li.active{background-color: red;}
+    x-tab > .content > li{display: none;}
+    x-tab > .content > li.active{display: block;}
+  </style>
+</head>
+<body>
+  <x-tab>
+    <ol class="nav">
+      <li>
+        <a href="#0">tab1</a>
+      </li>
+      <li>
+        <a href="#1">tab2</a>
+      </li>
+    </ol>
+
+    <ol class="content">
+      <li>content 1</li>
+      <li>content 2</li>
+    </ol>
+  </x-tab>
+
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script>  
+    selectTab()
+    window.onhashchange = (e) => {
+      selectTab()
+    }
+
+    function selectTab(){
+      let index = location.hash || '#0'
+      index = index.substring(1)
+      $('x-tab > .nav > li').eq(index).addClass('active')
+        .siblings().removeClass('active')
+      $('x-tab > .content > li').eq(index).addClass('active')
+        .siblings().removeClass('active')
+    }
+  </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>path实现前端路由</title>
+  <style>
+    x-tab{display: block}
+    x-tab > .nav > li.active{background-color: red;}
+    x-tab > .content > li{display: none;}
+    x-tab > .content > li.active{display: block;}
+  </style>
+</head>
+<body>
+  <x-tab>
+    <ol class="nav">
+      <li>
+        <a href="./tab1">tab1</a>
+      </li>
+      <li>
+        <a href="./tab2">tab2</a> 
+      </li>
+    </ol>
+
+    <ol class="content">
+      <li>content 1</li>
+      <li>content 2</li>
+    </ol>
+  </x-tab>
+
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script>
+    selectTab()
+   
+    $('x-tab').on('click','.nav > li > a',(e)=>{
+      e.preventDefault()       // 阻止 a 标签默认跳转
+      let a = e.currentTarget
+      let path = a.getAttribute('href')    // 获取 a 标签跳转路径，如 /tab1
+      window.history.pushState(null, null, path)      // 将 a 标签跳转路径添加到 url 上，使 url 改变
+      selectTab()                   // url 改变之后，调用函数操作 DOM
+    })
+
+    function selectTab(){
+      let index = location.pathname.substring(1) || 'tab1'
+      index = index.substring(3)
+      $('x-tab > .nav > li').eq(index - 1).addClass('active')
+        .siblings().removeClass('active')
+      $('x-tab > .content > li').eq(index - 1).addClass('active')
+        .siblings().removeClass('active')
+    }
+  </script>
+</body>
+</html>
